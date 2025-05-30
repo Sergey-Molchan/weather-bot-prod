@@ -16,13 +16,6 @@ LOCATION_East_sector = {
 # Все локации объединенные
 ALL_LOCATIONS = {**LOCATIONS_C_sector, **LOCATION_East_sector}
 
-# Сектора для меню
-SECTORS = {
-    "Центральный сектор": LOCATIONS_C_sector,
-    "Восточный сектор": LOCATION_East_sector,
-    "Все точки": ALL_LOCATIONS
-}
-
 # Настройки оповещения
 ALERT_WINDOW = 2  # Часов для предупреждения о грозе
 CHECK_INTERVAL = 1800  # 30 минут между проверками
