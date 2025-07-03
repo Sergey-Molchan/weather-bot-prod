@@ -1,5 +1,3 @@
-# main.py
-import asyncio
 import logging
 import os
 from dotenv import load_dotenv
@@ -15,8 +13,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
-async def main():
+def main():
     load_dotenv()
 
     weather_service = WeatherService(os.getenv("WEATHER_API_KEY"))
@@ -32,11 +29,10 @@ async def main():
     application.add_handler(handlers.get_conversation_handler())
 
     logger.info("Бот запущен")
-    await application.run_polling()
-
+    application.run_polling()
 
 if __name__ == "__main__":
     try:
-        asyncio.run(main())
+        main()
     except KeyboardInterrupt:
         logger.info("Бот остановлен")
