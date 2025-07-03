@@ -27,3 +27,16 @@ def get_weather_details_keyboard() -> list[list[InlineKeyboardButton]]:
         [InlineKeyboardButton("⬅️ Назад к точкам", callback_data="back_to_points")],
         [InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_main")]
     ]
+
+# Добавьте в конец файла
+def get_back_to_weather_keyboard() -> list[list[InlineKeyboardButton]]:
+    return [
+        [InlineKeyboardButton("⬅️ Назад к погоде", callback_data="back_to_weather")],
+        [InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_main")]
+    ]
+
+def get_thunder_check_keyboard() -> list[list[InlineKeyboardButton]]:
+    return [
+        [InlineKeyboardButton("🔄 Обновить", callback_data="check_thunder")],
+        [InlineKeyboardButton("🏠 Главное меню", callback_data="back_to_main")]
+    ]
