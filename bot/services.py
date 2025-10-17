@@ -44,7 +44,19 @@ class WeatherService:
                 return False
 
             alerts = data.get("alerts", {}).get("alert", [])
-            # Ищем русское слово "гроза" в описании событий
+            return any("гроза" in alert.get("event", "").lower() for alert in alerts)
+        except Exception as e:
+            logger.error(f"Ошибка при проверке грозы: {e}")
+            return False
+
+    async def check_thunder_for_point(self, location: str) -> bool:
+        """Проверяет наличие грозы для конкретной точки"""
+        try:
+            data = await self.get_weather_data(location)
+            if not data:
+                return False
+
+            alerts = data.get("alerts", {}).get("alert", [])
             return any("гроза" in alert.get("event", "").lower() for alert in alerts)
         except Exception as e:
             logger.error(f"Ошибка при проверке грозы: {e}")
@@ -76,18 +88,3 @@ class WeatherService:
             logger.error(f"Ошибка при обработке данных: {str(e)}")
 
         return alerts
-
-
-# services.py (добавить в класс WeatherService)
-async def check_thunder_for_point(self, location: str) -> bool:
-    """Проверяет наличие грозы для конкретной точки"""
-    try:
-        data = await self.get_weather_data(location)
-        if not data:
-            return False
-
-        alerts = data.get("alerts", {}).get("alert", [])
-        return any("гроза" in alert.get("event", "").lower() for alert in alerts)
-    except Exception as e:
-        logger.error(f"Ошибка при проверке грозы: {e}")
-        return False
